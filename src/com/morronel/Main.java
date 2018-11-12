@@ -8,6 +8,7 @@ import net.lingala.zip4j.model.FileHeader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -47,6 +48,63 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        // write your code here
+        //got to ask this from console
+        String path;
+        List<Character> list = new ArrayList<>();
+
+        path = "/home/uucyc/Desktop/password.x";
+        //adding lower case chars
+        for (int i = 97; i < 123; i++) {
+            list.add((char) i);
+        }
+
+        //adding numbers
+//        for (int i = 48; i < 58; i++) {
+//            list.add((char) i);
+//        }
+
+        //1 symbol checking loop
+        int i = 0;
+        for (Character symbol : list) {
+            System.out.println(++i);
+            if (verify(symbol.toString(), path)) {
+                System.out.println("The pass is " + symbol.toString());
+                return;
+            }
+        }
+        //2 symbols checking loop
+        for (Character symbol1 : list) {
+            for (Character symbol2 : list) {
+                System.out.println(++i);
+                if (verify(symbol1.toString() + symbol2.toString(), path)) {
+                    System.out.println("The pass is " + symbol1.toString() + symbol2.toString());
+                    return;
+                }
+            }
+        }//3 symbols checking loop
+        for (Character symbol1 : list) {
+            for (Character symbol2 : list) {
+                for (Character symbol3 : list) {
+                    System.out.println(++i);
+                    if (verify(symbol1.toString() + symbol2.toString() + symbol3.toString(), path)) {
+                        System.out.println("The pass is " + symbol1.toString() + symbol2.toString() + symbol3.toString());
+                        return;
+                    }
+                }
+            }
+        }//4 symbols checking loop
+        for (Character symbol1 : list) {
+            for (Character symbol2 : list) {
+                for (Character symbol3 : list) {
+                    for (Character symbol4 : list) {
+                        System.out.println(++i);
+                        if (verify(symbol1.toString() + symbol2.toString() + symbol3.toString() + symbol4.toString(), path)) {
+                            System.out.println("The pass is " + symbol1.toString() + symbol2.toString() + symbol3.toString() + symbol4.toString());
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
